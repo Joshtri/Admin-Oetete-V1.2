@@ -16,7 +16,7 @@
 
 
     <div class="row g-0 mt-5" style="min-height: calc(100vh - 50px);">
-      <!-- header start -->
+      <!-- header start --> 
       <%-  include('sidebar'); -%>
       <!-- header end   -->
 
@@ -33,19 +33,19 @@
             <input type="text" name="nama" class="form-control">
             </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-label">
-                <label>Keluarga</label>
-                <select class="form-control" name="kel_no_kk">
-                  <option>-</option>
-                  <% for (let row of keluarga) {%>
-                    <option value="<%= row.kel_no_kk %>"><%= row.kel_no_kk %></td>
-                  <% } %>
-                </select>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-label">
+                  <label>Keluarga</label>
+                  <select class="form-control" name="kel_no_kk">
+                    <option>-</option>
+                    <% for (let row of keluarga) { %>
+                      <option value="<%= row.no_kk %>"><%= row.no_kk %>-<%= row.kepala_kel %></option>
+                    <% } %>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
  
 
 

@@ -21,8 +21,6 @@ router.post('/tambah-data-keluarga', UserController.create_keluarga);
 // router.get('/tambah-data-penduduk', UserController.form)
 // router.post('/tambah-data-penduduk', UserController.create); 
 
-router.get('/tambah-data-kelahiran', UserController.form_kelahiran); 
-router.post('/tambah-data-kelahiran', UserController.create_kelahiran); 
 
 
 router.get('/tambah-data-masuk', function (req, res, next) {
@@ -46,6 +44,9 @@ router.get('/tambah-data-umkm',function(req,res,next){
 // GET tambah publikasi.
 router.get('/tambah-data-publikasi',UserController.form_publikasi_add);
 router.post('/tambah-data-publikasi',UserController.create_publikasi);
+
+router.get('/tambah-data-kelahiran', UserController.form_kelahiran); 
+router.post('/tambah-data-kelahiran', UserController.create_kelahiran); 
 
 router.get('/tambah-data-penduduk', UserController.form_penduduk);
 router.post('/tambah-data-penduduk', UserController.create_penduduk);
