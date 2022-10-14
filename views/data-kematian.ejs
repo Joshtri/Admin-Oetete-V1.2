@@ -77,99 +77,172 @@
 
 
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"">
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class=" modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Kelahiran</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body table-responsive">
+            <table class="table table-bordered no-margin">
+              <tbody>
+                <!-- <tr>
+                <th style="width:50%">Id KK</th>
+                <td>KK010202</td>
+              </tr> -->
+                <tr>
+                  <th style="width:50%">No KK</th>
+                  <!-- target binding 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 -->
+                  <td class="kel_no_kk"></td>
+                </tr>
+    
+                <tr>
+                  <th style="width:50%">Nama</th>
+                  <td class="nama"></td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Jenis Kelamin</th>
+                  <td class="jenis_kelamin"></td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Tanggal Lahir</th>
+                  <td class="tgl_lahir"></td>
+                </tr>
+                
+    
+    
+              </tbody>
+            </table>
+    
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    
+    
+    
+      <!-- Modal Delete-->
+      <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Penduduk</h5>
+              <h5 class="modal-title" id="exampleModalLabelDelete">Hapus Data</h5>
               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body table-responsive">
               <table class="table table-bordered no-margin">
-              <tbody>
-                <tr>
-                  <th style="width:50%">Tanggal Meninggal</th>
-                  <td>20/03/2018</td>
-                </tr>
-                <tr>
-                  <th style="width:50%">NIK</th>
-                  <td>5371041506020007</td>
-                </tr>
-              </tbody>
-            </table>
-      
+                <tbody>
+                  <p>Apakah anda ingin menghapus data ?</p>
+                </tbody>
+              </table>
+    
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Delete</button>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Modal Delete-->
-<div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabelDelete">Hapus Data</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    
+    
+      <!-- Modal edit -->
+    
+      <div class="modal fade " id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <form action="" class="form-edit" method="POST">
+            <!-- menambah form 🔥🔥🔥🔥🔥🔥 -->
+            <div class="modal-content ">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Kelahiran</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body table-responsive">
+                <table class="table table-bordered no-margin">
+                  <tbody>
+                    <tr>
+                      <th style="width:50%">No KK</th>
+                      <td>
+                        <!-- menambah target binding berdasarkan atribut name -->
+                        <input type="number" name="kel_no_kk" class="form-control" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th style="width:50%">Nama</th>
+                      <td>
+                        <input type="text" name="nama" class="form-control" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th style="width:50%">Jenis Kelamin</th>
+                      <td>
+                        <input type="text" name="jenis_kelamin" class="form-control" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th style="width:50%">Tanggal Lahir</th>
+                      <td>
+                        <input type="date" name="tgl_lahir" class="form-control" />
+                      </td>
+                    </tr>
+                  
+    
+                  </tbody>
+                </table>
+    
+    
+              </div>
+    
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+        </div>
+        </form>
       </div>
-      <div class="modal-body table-responsive">
-        <table class="table table-bordered no-margin">
-        <tbody>
-          <p> Apakah anda ingin menghapus data ?</p>
-        </tbody>
-      </table>
-
+    
+      <!-- 🔥🔥🔥🔥 modal pemberitahuan -->
+      <% 
+        if(typeof sukses != "undefined"){
+      %>
+      <div class="modal fade modal-pemberitahuan" tabindex="-1" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class=" modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <%= sukses == "true" ? "Berhasil" : "Kesalahan" %>
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body table-responsive">
+            <%= pesan || "Terjadi sebuah kesalahan" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Delete</button>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Edit -->
-<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Kematian</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body table-responsive">
-        <table class="table table-bordered no-margin">
-          <tbody>
-            <tr>
-              <th style="width:50%">Tanggal Meninggal</th>
-              <td>29/08/20012</td>
-            </tr>
-            <tr>
-              <th style="width:50%">NIK</th>
-              <td>5371041506020007</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-primary">Simpan</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+      <% 
+        }
+      %>
+    
 
        <!-- footer start -->
        <%- include('footer'); -%>

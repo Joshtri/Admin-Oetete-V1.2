@@ -85,13 +85,23 @@
               <td scope="row" class="text-center"><%= row.jenis_kelamin %></td>
               <td scope="row" class="text-center"><%= row.tgl_lahir %></td>
               <td scope="row" class="text-center">
-                <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa-solid fa-users-rectangle bg-primary p-2 text-white rounded" data-toggle="tooltip" title="Detail"></i>
-                </button>
-                <button class="border-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded" data-toggle="tooltip" title="Edit" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"></i></button>
-                <a href="/data/data-kelahiran/delete/<%= row.id_lahir %>"><button class="border-0">
-                  <i class="fa-solid fa-trash-can bg-danger p-2 text-white rounded" data-toggle="tooltip" title="Delete"></i>
-                </button></a>
+                <div class="d-flex flex-nowrap">
+                  <!-- menambah JSON.stringify(row) ke atribut data-json untuk diakses dari modal -->
+                  <!-- setiap data json memiliki nilai berbeda mengikuti variabel row -->
+                  <button type="button" class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-json="<%= JSON.stringify(row) %>"><i
+                      class="fa-solid fa-users-rectangle bg-primary p-2 text-white rounded" data-toggle="tooltip"
+                      title="Detail"></i></button>
+                  <!-- menambah data-form-action sebagai target / alamat proses untuk 
+                      mengubah data setiap data yang memiliki alamat update berbeda -->
+                  <button class="border-0"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
+                      data-toggle="tooltip" title="Edit" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"
+                      data-json="<%= JSON.stringify(row) %>"
+                      data-form-action="/data/data-keluarga/update/<%= row.no_kk %>"></i></button>
+                  <a href="/data/data-keluarga/delete/<%= row.no_kk %>"><button class="border-0"><i
+                        class="fa-solid fa-trash-can bg-danger p-2 text-white rounded" data-toggle="tooltip"
+                        title="Delete"></i></button></a>
+                </div>
               </td>
               <% number++; %>
             </tr>
@@ -101,6 +111,170 @@
       </div>
       </div>
 
+       <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class=" modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Kelahiran</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body table-responsive">
+        <table class="table table-bordered no-margin">
+          <tbody>
+            <!-- <tr>
+            <th style="width:50%">Id KK</th>
+            <td>KK010202</td>
+          </tr> -->
+            <tr>
+              <th style="width:50%">No KK</th>
+              <!-- target binding 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 -->
+              <td class="kel_no_kk"></td>
+            </tr>
+
+            <tr>
+              <th style="width:50%">Nama</th>
+              <td class="nama"></td>
+            </tr>
+            <tr>
+              <th style="width:50%">Jenis Kelamin</th>
+              <td class="jenis_kelamin"></td>
+            </tr>
+            <tr>
+              <th style="width:50%">Tanggal Lahir</th>
+              <td class="tgl_lahir"></td>
+            </tr>
+            
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- Modal Delete-->
+  <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelDelete">Hapus Data</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body table-responsive">
+          <table class="table table-bordered no-margin">
+            <tbody>
+              <p>Apakah anda ingin menghapus data ?</p>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal edit -->
+
+  <div class="modal fade " id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <form action="" class="form-edit" method="POST">
+        <!-- menambah form 🔥🔥🔥🔥🔥🔥 -->
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Kelahiran</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body table-responsive">
+            <table class="table table-bordered no-margin">
+              <tbody>
+                <tr>
+                  <th style="width:50%">No KK</th>
+                  <td>
+                    <!-- menambah target binding berdasarkan atribut name -->
+                    <input type="number" name="kel_no_kk" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Nama</th>
+                  <td>
+                    <input type="text" name="nama" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Jenis Kelamin</th>
+                  <td>
+                    <input type="text" name="jenis_kelamin" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Tanggal Lahir</th>
+                  <td>
+                    <input type="date" name="tgl_lahir" class="form-control" />
+                  </td>
+                </tr>
+              
+
+              </tbody>
+            </table>
+
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  <!-- 🔥🔥🔥🔥 modal pemberitahuan -->
+  <% 
+    if(typeof sukses != "undefined"){
+  %>
+  <div class="modal fade modal-pemberitahuan" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class=" modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <%= sukses == "true" ? "Berhasil" : "Kesalahan" %>
+        </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body table-responsive">
+        <%= pesan || "Terjadi sebuah kesalahan" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% 
+    }
+  %>
 
     <!-- footer start -->
     <%- include('footer'); -%>
@@ -150,14 +324,14 @@
         // binding data yang diterima dari tombol ke element yang ada pada modal detail
 
         // bind data.no_kk ke anak elemen dari modal detail yang memiliki class no_kk
-        $(modal).find(".no_kk").text(data.no_kk) // cara jquery
+        $(modal).find(".kel_no_kk").text(data.kel_no_kk) // cara jquery
         // atau sama dengan cara vanilla javascript (javascript native/biasa)
         // modal.querySelector('.no_kk').innerHTML = data.no_kk
         // binding elemen lainnya yang ada pada modal detail
-        $(modal).find(".no").text(data.alamat)
-        $(modal).find(".kecamatan").text(data.kecamatan)
-        $(modal).find(".kel_n_desa").text(data.kel_n_desa)
-        $(modal).find(".kepala_kel").text(data.kepala_kel)
+        $(modal).find(".nama").text(data.nama)
+        $(modal).find(".jenis_kelamin").text(data.jenis_kelamin)
+        $(modal).find(".tgl_lahir").text(data.tgl_lahir)
+       
 
       });
       /**
@@ -174,11 +348,11 @@
         // binding action form dari data target form
         $(modal_edit).find("form").attr("action", target)
         // sedikit berbeda target bindingnya elemen input berdasarkan atribut name
-        $(modal_edit).find("[name='no_kk']").val(data.no_kk) // cara jquery
-        $(modal_edit).find("[name='alamat']").val(data.alamat)
-        $(modal_edit).find("[name='kecamatan']").val(data.kecamatan)
-        $(modal_edit).find("[name='kel_n_desa']").val(data.kel_n_desa)
-        $(modal_edit).find("[name='kepala_kel']").val(data.kepala_kel)
+        $(modal_edit).find("[name='kel_no_kk']").val(data.kel_no_kk) // cara jquery
+        $(modal_edit).find("[name='nama']").val(data.nama)
+        $(modal_edit).find("[name='jenis_kelamin']").val(data.jenis_kelamin)
+        $(modal_edit).find("[name='tgl_lahir']").val(data.tgl_lahir)
+        
 
 
       });
