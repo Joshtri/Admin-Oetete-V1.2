@@ -100,9 +100,7 @@ router.get("/data-umkm", function (req, res, next) {
 router.get("/data-pengguna", UserController.view_pengguna);
 // router.post("/data-publikasi/edit/:nik", UserController.delete_publikasi);
 
-router.get(
-  "/data-pengguna/delete/:user_id",
-  function (request, response, next) {
+router.get("/data-pengguna/delete/:user_id",function (request, response, next) {
     var user_id = request.params.user_id;
     // User the connection
     var query = `DELETE FROM admin_login WHERE user_id = "${user_id}"`;
@@ -161,8 +159,10 @@ router.post("/data-keluarga/update/:no_kk", function (request, response, next) {
         "pesan": "Berhasil menyimpan perubahan"
       }
     }));
-  })
+  });
 });
+
+
 
 router.get("/data-keluarga/delete/:no_kk", function (request, response, next) {
   var no_kk = request.params.no_kk;
@@ -182,16 +182,8 @@ router.get("/data-keluarga/delete/:no_kk", function (request, response, next) {
 //GET Publikasi
 router.get("/data-publikasi", UserController.view_publikasi);
 
-router.get("/data-publikasi/edit/:id_publish", UserController.edit_publikasi);
-router.post(
-  "/data-publikasi/edit/:id_publish",
-  UserController.update_publikasi
-);
-
 // router.get("/editpublikasi/:id", UserController.edit_publikasi);
-router.get(
-  "/data-publikasi/delete/:id_publish",
-  function (request, response, next) {
+router.get("/data-publikasi/delete/:id_publish",function (request, response, next) {
     var id_publish = request.params.id_publish;
     // User the connection
     var query = `DELETE FROM publikasi WHERE id_publish = "${id_publish}"`;

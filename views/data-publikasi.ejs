@@ -138,10 +138,89 @@
   </div>
   </div>
     
+  <!-- Modal edit -->
+
+  <div class="modal fade " id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <form action="" class="form-edit" method="POST">
+        <!-- menambah form 🔥🔥🔥🔥🔥🔥 -->
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Keluarga</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body table-responsive">
+            <table class="table table-bordered no-margin">
+              <tbody>
+                <tr>
+                  <th style="width:50%">No KK</th>
+                  <td>
+                    <!-- menambah target binding berdasarkan atribut name -->
+                    <input type="number" name="no_kk" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Kepala Keluarga</th>
+                  <td>
+                    <input type="text" name="kepala_kel" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">Alamat</th>
+                  <td>
+                    <input type="text" name="alamat" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <th style="width:50%">RT</th>
+                  <td>
+                    <input type="number" name="rt" class="form-control" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
 
-    
+          </div>
 
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  <!-- 🔥🔥🔥🔥 modal pemberitahuan -->
+  <% 
+    if(typeof sukses != "undefined"){
+  %>
+  <div class="modal fade modal-pemberitahuan" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class=" modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <%= sukses == "true" ? "Berhasil" : "Kesalahan" %>
+        </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body table-responsive">
+        <%= pesan || "Terjadi sebuah kesalahan" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% 
+    }
+  %>
 
 
       <!-- footer start -->
